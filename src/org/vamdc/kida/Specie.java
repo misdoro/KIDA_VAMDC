@@ -117,6 +117,8 @@ public class Specie extends _Specie {
 	public boolean isASpecialSpecies()
 	{
 		Arrays.sort(specialSpecies);
+		if (this.getFormula()==null)
+			return false;
 		int index = Arrays.binarySearch(specialSpecies,this.getFormula() );
 
 		if ( index >= 0 )
