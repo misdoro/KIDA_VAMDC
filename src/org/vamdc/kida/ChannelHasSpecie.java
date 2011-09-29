@@ -6,5 +6,5 @@ public class ChannelHasSpecie extends _ChannelHasSpecie {
 
 	public final static String PRODUCT="product";
 	public final static String REACTANT="reactant";
-	
+
 }
