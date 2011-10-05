@@ -20,6 +20,7 @@ public abstract class _Channel extends CayenneDataObject {
 
     public static final String ADDED_STATUS_PROPERTY = "addedStatus";
     public static final String CREATED_AT_PROPERTY = "createdAt";
+    public static final String ID_PROPERTY = "id";
     public static final String NUM_PROPERTY = "num";
     public static final String STATUS_PROPERTY = "status";
     public static final String UPDATED_AT_PROPERTY = "updatedAt";
@@ -43,6 +44,13 @@ public abstract class _Channel extends CayenneDataObject {
     }
     public Date getCreatedAt() {
         return (Date)readProperty("createdAt");
+    }
+
+    public void setId(Integer id) {
+        writeProperty("id", id);
+    }
+    public Integer getId() {
+        return (Integer)readProperty("id");
     }
 
     public void setNum(Integer num) {
