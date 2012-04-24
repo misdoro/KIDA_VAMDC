@@ -32,10 +32,8 @@ public class Specie extends _Specie {
 
 		} 
 
-		if ( this.getCharge() < 0 )
-			formula += "-";
-		if ( this.getCharge() > 0 )
-			formula += "+";
+		formula+=getChargeStr(this.getCharge());
+		
 		return formula;
 	}
 
@@ -65,14 +63,23 @@ public class Specie extends _Specie {
 
 		} 
 
-		if ( this.getCharge() < 0 )
-			formula += "$^" + "-";
-		if ( this.getCharge() > 0 )
-			formula += "$^" + "+";
+		String charge = getChargeStr(this.getCharge());
+		if (charge!="")
+			formula+="$^"+charge;
+		
 		return formula;
 
 	}
 
+	private String getChargeStr(Integer charge){
+		if (charge==null || charge ==0)
+			return "";
+		if (charge>0)
+			return "+";
+		else 
+			return "-";
+	}
+	
 	public double getMass()
 	{
 		double mass = 0;
