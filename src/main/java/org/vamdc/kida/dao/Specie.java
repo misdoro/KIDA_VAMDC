@@ -137,4 +137,7 @@ public class Specie extends _Specie {
 		return false;
 	}
 
+	public boolean isValid(){
+		return (this.isASpecialSpecies() || (this.getInchiKey()!=null && this.getInchiKey().length()>0));
+	}
 }

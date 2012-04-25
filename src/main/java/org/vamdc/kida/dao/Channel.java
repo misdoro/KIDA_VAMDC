@@ -11,6 +11,11 @@ public class Channel extends _Channel {
 			return false;
 		if (this.getTypeChannel() == null || "3-body".equals(this.getTypeChannel().getAbbrev()))
 			return false;
+		for (Specie element:this.getSpecies()){
+			if (!element.isValid())
+				return false;
+		}
+		
 		return true;
 	}
 	
