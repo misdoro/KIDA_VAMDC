@@ -6,21 +6,12 @@ public class Channel extends _Channel {
 	public final static String PRODUCT="product";
 	public final static String REACTANT="reactant";
 
-	// get unit for alpha parameter. Depends of the type of channel
-	public String getUnitAlpha() {
-		//TODO: there must be a better criteria to figure out units
-		try
-		{
-			if ( this.getTypeChannel().getId() < 4 )
-				return "1/s";
-		}
-		catch (Exception e)
-		{
-
-		}
-
-		return "cm3/s";
-
+	public boolean isValid(){
+		if (this.getAddedStatus() == 0)
+			return false;
+		if (this.getTypeChannel() == null || "3-body".equals(this.getTypeChannel().getAbbrev()))
+			return false;
+		return true;
 	}
-
+	
 }

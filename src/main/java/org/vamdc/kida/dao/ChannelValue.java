@@ -14,7 +14,16 @@ public class ChannelValue extends _ChannelValue {
 				
 			
 		}
-		return -1;
-		
+		throw new IllegalArgumentException("Value for variable "+variableName+" not found in channel "+this.getChannel().getId());	
+	}
+	
+	public boolean isValid() {
+		if (getIsTrash() == 1)
+			return false;
+		if (getIsTemp() == 1)
+			return false;
+		if (getStatus() == 0)
+			return false;
+		return true;
 	}
 }
