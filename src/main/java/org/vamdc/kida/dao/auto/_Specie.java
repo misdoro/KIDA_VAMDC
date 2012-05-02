@@ -7,6 +7,7 @@ import org.apache.cayenne.CayenneDataObject;
 import org.vamdc.kida.dao.Channel;
 import org.vamdc.kida.dao.ChannelHasSpecie;
 import org.vamdc.kida.dao.ChannelValue;
+import org.vamdc.kida.dao.Element;
 import org.vamdc.kida.dao.SpecieHasElement;
 import org.vamdc.kida.dao.ThreeBodyChannelHasSpecie;
 import org.vamdc.kida.dao.ThreeBodyReactionHasReactant;
@@ -41,6 +42,7 @@ public abstract class _Specie extends CayenneDataObject {
     public static final String CHANNEL_PROPERTY = "channel";
     public static final String CHANNEL_HAS_SPECIES_PROPERTY = "channelHasSpecies";
     public static final String CHANNEL_VALUES_PROPERTY = "channelValues";
+    public static final String ELEMENT_PROPERTY = "element";
     public static final String SPECIE_HAS_ELEMENTS_PROPERTY = "specieHasElements";
     public static final String THREE_BODY_CHANNEL_HAS_SPECIES_PROPERTY = "threeBodyChannelHasSpecies";
     public static final String THREE_BODY_REACTION_HAS_REACTANTS_PROPERTY = "threeBodyReactionHasReactants";
@@ -207,6 +209,18 @@ public abstract class _Specie extends CayenneDataObject {
     @SuppressWarnings("unchecked")
     public List<ChannelValue> getChannelValues() {
         return (List<ChannelValue>)readProperty("channelValues");
+    }
+
+
+    public void addToElement(Element obj) {
+        addToManyTarget("element", obj, true);
+    }
+    public void removeFromElement(Element obj) {
+        removeToManyTarget("element", obj, true);
+    }
+    @SuppressWarnings("unchecked")
+    public List<Element> getElement() {
+        return (List<Element>)readProperty("element");
     }
 
 
