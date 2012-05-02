@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.cayenne.CayenneDataObject;
+import org.vamdc.kida.dao.Channel;
 import org.vamdc.kida.dao.ChannelHasSpecie;
+import org.vamdc.kida.dao.ChannelValue;
 import org.vamdc.kida.dao.SpecieHasElement;
 import org.vamdc.kida.dao.ThreeBodyChannelHasSpecie;
 import org.vamdc.kida.dao.ThreeBodyReactionHasReactant;
@@ -36,7 +38,9 @@ public abstract class _Specie extends CayenneDataObject {
     public static final String STRUCTURE_PROPERTY = "structure";
     public static final String UPDATED_AT_PROPERTY = "updatedAt";
     public static final String VIBRATION_LEVEL_PROPERTY = "vibrationLevel";
+    public static final String CHANNEL_PROPERTY = "channel";
     public static final String CHANNEL_HAS_SPECIES_PROPERTY = "channelHasSpecies";
+    public static final String CHANNEL_VALUES_PROPERTY = "channelValues";
     public static final String SPECIE_HAS_ELEMENTS_PROPERTY = "specieHasElements";
     public static final String THREE_BODY_CHANNEL_HAS_SPECIES_PROPERTY = "threeBodyChannelHasSpecies";
     public static final String THREE_BODY_REACTION_HAS_REACTANTS_PROPERTY = "threeBodyReactionHasReactants";
@@ -176,6 +180,18 @@ public abstract class _Specie extends CayenneDataObject {
         return (String)readProperty("vibrationLevel");
     }
 
+    public void addToChannel(Channel obj) {
+        addToManyTarget("channel", obj, true);
+    }
+    public void removeFromChannel(Channel obj) {
+        removeToManyTarget("channel", obj, true);
+    }
+    @SuppressWarnings("unchecked")
+    public List<Channel> getChannel() {
+        return (List<Channel>)readProperty("channel");
+    }
+
+
     public void addToChannelHasSpecies(ChannelHasSpecie obj) {
         addToManyTarget("channelHasSpecies", obj, true);
     }
@@ -185,6 +201,12 @@ public abstract class _Specie extends CayenneDataObject {
     @SuppressWarnings("unchecked")
     public List<ChannelHasSpecie> getChannelHasSpecies() {
         return (List<ChannelHasSpecie>)readProperty("channelHasSpecies");
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public List<ChannelValue> getChannelValues() {
+        return (List<ChannelValue>)readProperty("channelValues");
     }
 
 
