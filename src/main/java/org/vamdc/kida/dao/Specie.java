@@ -11,8 +11,12 @@ import org.vamdc.kida.dao.auto._Specie;
 
 public class Specie extends _Specie {
 
-	private String[] specialSpecies = { "Cr", "CR" , "Crp" , "CRP",  "e", "e-", "E" ,"photon" , "Photon", "PHOTON" };
-
+	private static final  String[] specialSpecies = { "Cr", "CR" , "Crp" , "CRP",  "e", "e-", "E" ,"photon" , "Photon", "PHOTON" };
+	static{
+		Arrays.sort(specialSpecies);
+	}
+	
+	
 	// return the formula sorted alphabetically
 	public String getFormulaSorted()
 	{
@@ -109,7 +113,6 @@ public class Specie extends _Specie {
 
 	public boolean isASpecialSpecies()
 	{
-		Arrays.sort(specialSpecies);
 		if (this.getFormula()==null)
 			return false;
 		int index = Arrays.binarySearch(specialSpecies,this.getFormula() );
@@ -120,21 +123,13 @@ public class Specie extends _Specie {
 
 	public boolean isAnAtom()
 	{
-		if (this.getCharge() == null || this.getCharge() != 0 )
-			return false;
-
 		if ( this.isASpecialSpecies() )
 			return false;
 		
-		if (this.getSpecieHasElements().size()>1)
+		if (this.getSpecieHasElements() ==null || this.getSpecieHasElements().size()!=1)
 			return false;
 		
-		for(SpecieHasElement she : this.getSpecieHasElements())
-		{
-			return she.getOccurrence()==1;
-		}
-		
-		return false;
+		return this.getSpecieHasElements().get(0).getOccurrence()==1;
 	}
 
 	public boolean isValid(){
