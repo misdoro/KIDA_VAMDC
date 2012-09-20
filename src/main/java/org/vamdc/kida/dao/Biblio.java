@@ -27,9 +27,10 @@ public class Biblio extends _Biblio {
 		Collection<String> authors = new ArrayList<String>(); 
 		authors.add(this.getMainAuthor());
 		if (this.getAuthors()!=null)
-			for (String author: this.getAuthors().split(";"))
+			for (String author: this.getAuthors().split("[;\n\r]"))
 			{
-				authors.add(author.trim());
+				if (author.trim().length()>0)
+					authors.add(author.trim());
 			}
 		return authors;
 	}
