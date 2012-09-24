@@ -58,4 +58,25 @@ public class Biblio extends _Biblio {
 		return null;	
 	}
 	
+	@Override
+	public boolean equals(Object o){
+		if (o!=null && this.getClass().isAssignableFrom(o.getClass())){
+			Biblio bib = (Biblio) o;
+			return this.getAuthors().equals(bib.getAuthors())
+					&& this.getMainAuthor().equals(bib.getMainAuthor())
+					&& this.getTitle().equals(bib.getTitle())
+					&& this.getYear().equals(bib.getYear());
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		if (this.getTitle()!=null)
+			return this.getTitle().hashCode();
+		else
+			return this.getId();
+	}
+	
 }
